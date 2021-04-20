@@ -92,8 +92,24 @@ export const ViewLeft = styled.div`
     position: absolute;
     text-shadow: 0px 1px 2px #000000b3;
     > p:nth-child(1) {
-      margin-right: 122px;
-      width: 160px;
+      margin-right: 82px;
+      width: 200px;
+      text-transform: uppercase;
+    }
+  }
+
+  .cvv-cartao{
+    display: flex;
+    font-size: 24px;
+    line-height: 27px;
+    letter-spacing: -0.12px;
+    color: #000;
+    position: absolute;
+    top: 81px;
+    left: 246px;
+    width: 100%;
+    > p {
+      text-shadow: 0px 1px 2px #000000b3;
     }
   }
 `;
@@ -146,11 +162,24 @@ export const Formulario = styled.div`
     border: none;
     border-bottom: 1px solid #c9c9c9;
     margin-bottom: 62px;
-    ::placeholder {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 22px;
+    background: rgba(0, 0, 0, 0);
+    ::placeholder,
+    .option {
       color: #c9c9c9;
       font-family: Verdana, Geneva, Tahoma, sans-serif;
       font-size: 22px;
     }
+
+    .option {
+      color: #000;
+    }
+    .option-desabled {
+      color: #c9c9c9;
+      background: #e3e3e3;
+    }
+
     :focus {
       box-shadow: 0 0 0 0;
       border: 0 none;
@@ -159,6 +188,12 @@ export const Formulario = styled.div`
     }
   }
 
+  .select {
+    color: ${(props) => (props.colorParcela ===true ? "#000" : "#c9c9c9")};
+  }
+  .date {
+    color: ${(props) => (props.colorDate ===true ? "#000" : "#c9c9c9")};
+  }
   .validade-cvv {
     display: flex;
     .form-input {

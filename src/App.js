@@ -4,32 +4,48 @@ import seta from "./assets/icons/seta.png";
 import seta_right from "./assets/icons/seta-r.png";
 import icon_card from "./assets/icons/icon-card.svg";
 import cartao from "./assets/icons/cartao.svg";
+import versoCartaoImg from "./assets/icons/verso-cartao.svg";
 import check from "./assets/icons/check.png";
 
 function App() {
-  var currentNumber = ["* * * *", "* * * *", "* * * *", "* * * *"];
+  const [currentInputNumber, setCurrentInputNumber] = useState(
+    "****************"
+  );
+  const [currentInputTitular, setCurrentInputTitular] = useState(
+    "NOME DO TITULAR"
+  );
+  const [currentInputMes, setCurrentInputMes] = useState("00");
+  const [currentInputAno, setCurrentInputAno] = useState("00");
+  const [currentInputCvv, setCurrentInputCvv] = useState("***");
 
-  const InserirNumeroCartao = (numero) => {
-    currentNumber = ["* * * *", "* * * *"];
-    // if (numero.length <= 4) {
-    //   currentNumber = [numero.slice(0, numero.length - 1)];
-    // } else if (numero.length > 4 && numero.length <= 8) {
-    //   currentNumber = [numero.slice(0, 4), numero.slice(4, numero.length - 1)];
-    // } else if (numero.length > 8 && numero.length <= 12) {
-    //   currentNumber = [
-    //     numero.slice(0, 4),
-    //     numero.slice(4, 8),
-    //     numero.slice(8, numero.length - 1),
-    //   ];
-    // } else if (numero.length > 12 && numero.length <= 16) {
-    //   currentNumber = [
-    //     numero.slice(0, 4),
-    //     numero.slice(4, 8),
-    //     numero.slice(8, 12),
-    //     numero.slice(12, numero.length - 1),
-    //   ];
-    // }
-  };
+  const [colorParcela, setColorParcela] = useState(false);
+  const [colorDate, setColorDate] = useState(false);
+
+  const [versoCartao, setVersoCartao] = useState(false);
+
+  useEffect(() => {
+    if (currentInputNumber.length === 0) {
+      setCurrentInputNumber("****************");
+    }
+    if (currentInputTitular.length === 0) {
+      setCurrentInputTitular("NOME DO TITULAR");
+    }
+    if (currentInputMes.length === 0) {
+      setCurrentInputMes("00");
+    }
+    if (currentInputAno.length === 0) {
+      setCurrentInputAno("00");
+    }
+    if (currentInputCvv.length === 0) {
+      setCurrentInputAno("00");
+    }
+  }, [
+    currentInputNumber,
+    currentInputTitular,
+    currentInputAno,
+    currentInputMes,
+    currentInputCvv,
+  ]);
 
   return (
     <>
@@ -46,19 +62,30 @@ function App() {
               <img src={icon_card} alt='icone-card' />
               <p>Adicione um novo cartão de crédito</p>
             </div>
-            <div className='cartao'>
-              <img src={cartao} alt='icone-card' />
-              <div className='numero-cartao'>
-                <p>{currentNumber[0]}</p>
-                <p>{currentNumber[1]}</p>
-                <p>{currentNumber[2]}</p>
-                <p>{currentNumber[3]}</p>
+            {versoCartao === false ? (
+              <div className='cartao'>
+                <img src={cartao} alt='icone-card' />
+                <div className='numero-cartao'>
+                  <p>{currentInputNumber.slice(0, 4)}</p>
+                  <p>{currentInputNumber.slice(4, 8)}</p>
+                  <p>{currentInputNumber.slice(8, 12)}</p>
+                  <p>{currentInputNumber.slice(12, 16)}</p>
+                </div>
+                <div className='titular-validade'>
+                  <p>{currentInputTitular}</p>
+                  <p>
+                    {currentInputMes}/{currentInputAno}
+                  </p>
+                </div>
               </div>
-              <div className='titular-validade'>
-                <p>NOME DO TITULAR</p>
-                <p>00/00</p>
+            ) : (
+              <div className='cartao'>
+                <img src={versoCartaoImg} alt='icone-card' />
+                <div className='cvv-cartao'>
+                  <p>{currentInputCvv}</p>
+                </div>
               </div>
-            </div>
+            )}
           </ViewLeft>
           <ViewRight>
             <div className='passo'>
@@ -77,31 +104,88 @@ function App() {
               <p className='passo-numero passo-numero_last'>3</p>
               <p>Confirmação</p>
             </div>
-            <Formulario>
+            <Formulario colorParcela={colorParcela} colorDate={colorDate}>
               <input
                 className='form-input'
                 type='number'
                 placeholder='Número do cartão'
-                onChange={(e) => InserirNumeroCartao(e.target.value)}
+                onChange={(e) => setCurrentInputNumber(e.target.value)}
+                onClick={() => setVersoCartao(false)}
               />
               <input
                 className='form-input'
                 type='text'
                 placeholder='Nome (igual ao cartão)'
+                onChange={(e) => setCurrentInputTitular(e.target.value)}
+                onClick={() => setVersoCartao(false)}
               />
               <div className='validade-cvv'>
                 <input
+                  className='form-input date'
+                  type='month'
+                  placeholder='Validade'
+                  onClick={() => setVersoCartao(false)}
+                  onChange={(e) => {
+                    const array_date = e.target.value.split("-");
+                    setCurrentInputAno(array_date[0].slice(2, 4));
+                    setCurrentInputMes(array_date[1]);
+                    setColorDate(true);
+                  }}
+                />
+                <input
                   className='form-input'
                   type='number'
-                  placeholder='Validade'
+                  placeholder='CVV'
+                  onChange={(e) => setCurrentInputCvv(e.target.value)}
+                  onClick={() => setVersoCartao(true)}
                 />
-                <input className='form-input' type='number' placeholder='CVV' />
               </div>
-              <input
-                className='form-input'
-                type='number'
-                placeholder='Número de parcelas'
-              />
+              <select
+                className='form-input select'
+                onChange={() => setColorParcela(true)}
+                defaultValue='0'
+                onClick={() => setVersoCartao(false)}
+              >
+                <option className='option option-desabled' disabled value='0'>
+                  Número de parcelas
+                </option>
+                <option className='option' value='1'>
+                  R$ XX,XX * 1x
+                </option>
+                <option className='option' value='2'>
+                  R$ XX,XX * 2x
+                </option>
+                <option className='option' value='3'>
+                  R$ XX,XX * 3x
+                </option>
+                <option className='option' value='4'>
+                  R$ XX,XX * 4x
+                </option>
+                <option className='option' value='5'>
+                  R$ XX,XX * 5x
+                </option>
+                <option className='option' value='6'>
+                  R$ XX,XX * 6x
+                </option>
+                <option className='option' value='7'>
+                  R$ XX,XX * 7x
+                </option>
+                <option className='option' value='8'>
+                  R$ XX,XX * 8x
+                </option>
+                <option className='option' value='9'>
+                  R$ XX,XX * 9x
+                </option>
+                <option className='option' value='10'>
+                  R$ XX,XX * 10x
+                </option>
+                <option className='option' value='11'>
+                  R$ XX,XX * 11x
+                </option>
+                <option className='option' value='12'>
+                  R$ XX,XX * 12x
+                </option>
+              </select>
             </Formulario>
           </ViewRight>
         </Container>

@@ -18,22 +18,40 @@ export const Page = styled.div`
 `;
 
 export const Container = styled.div`
-  width: 1024px;
-  height: 595px;
   display: flex;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  @media (min-width: 740px) {
+    width: 740px;
+    height: 430px;
+  }
+  @media (min-width: 1024px) {
+    width: 1024px;
+    height: 595px;
+  }
 `;
 
 export const ViewLeft = styled.div`
-  width: 352px;
   height: 100%;
   background: #de4b4b;
   z-index: 2;
+  @media (min-width: 740px) {
+    width: 254px;
+  }
+  @media (min-width: 1024px) {
+    width: 352px;
+  }
 
   .alterar-forma {
-    padding-top: 55px;
-    padding-left: 68px;
     display: flex;
     align-items: center;
+    @media (min-width: 740px) {
+      padding-top: 40px;
+      padding-left: 49px;
+    }
+    @media (min-width: 1024px) {
+      padding-top: 55px;
+      padding-left: 68px;
+    }
     > p {
       color: #fff;
       margin: 0;
@@ -41,73 +59,166 @@ export const ViewLeft = styled.div`
   }
 
   .seta {
-    margin-right: 15px;
+    @media (min-width: 740px) {
+      margin-right: 10px;
+    }
+    @media (min-width: 1024px) {
+      margin-right: 15px;
+    }
   }
 
   .titulo-cartao {
-    margin-top: 50px;
-    padding-left: 68px;
+    @media (min-width: 740px) {
+      margin-top: 36px;
+      padding-left: 49px;
+    }
+    @media (min-width: 1024px) {
+      margin-top: 50px;
+      padding-left: 68px;
+    }
     display: flex;
     > p {
       color: #fff;
       margin: 0;
-      margin-left: 15px;
-      font-size: 20px;
-      line-height: 24px;
+      @media (min-width: 740px) {
+        margin-left: 10px;
+        font-size: 14px;
+        line-height: 17px;
+      }
+      @media (min-width: 1024px) {
+        margin-left: 15px;
+        font-size: 20px;
+        line-height: 24px;
+      }
       letter-spacing: -0.01px;
       font-weight: bold;
     }
   }
 
+  .icon-card {
+    @media (min-width: 740px) {
+      width: 36px;
+      height: 36px;
+      margin-right: 10px;
+    }
+    @media (min-width: 1024px) {
+      width: 50px;
+      height: 50px;
+      margin-right: 15px;
+    }
+    > img {
+      max-width: 140%;
+      box-sizing: border-box;
+    }
+  }
+
   .cartao {
-    margin-top: 30px;
-    padding-left: 68px;
+    @media (min-width: 740px) {
+      margin-top: 21px;
+      padding-left: 49px;
+    }
+    @media (min-width: 1024px) {
+      margin-top: 30px;
+      padding-left: 68px;
+    }
     position: relative;
+  }
+
+  .img-cartao {
+    @media (min-width: 740px) {
+      width: 263px;
+      height: 161px;
+    }
+    @media (min-width: 1024px) {
+      width: 364px;
+      height: 223.78px;
+    }
+    > img {
+      max-width: 100%;
+      box-sizing: border-box;
+    }
   }
 
   .numero-cartao {
     display: flex;
-    font-size: 24px;
-    line-height: 27px;
+
     letter-spacing: -0.12px;
     color: #fff;
     position: absolute;
-    top: 80px;
-    left: 95px;
+
     width: 100%;
+    @media (min-width: 740px) {
+      left: 68px;
+      top: 57px;
+      line-height: 19px;
+      font-size: 17px;
+    }
+    @media (min-width: 1024px) {
+      font-size: 24px;
+      line-height: 27px;
+      top: 80px;
+      left: 95px;
+    }
     > p {
-      margin-right: 28px;
+      @media (min-width: 740px) {
+        margin-right: 20px;
+      }
+      @media (min-width: 1024px) {
+        margin-right: 28px;
+      }
       text-shadow: 0px 1px 2px #000000b3;
     }
   }
 
   .titular-validade {
     display: flex;
-    font-size: 16px;
-    line-height: 23px;
     letter-spacing: -0.12px;
     color: #fff;
-    top: 150px;
-    left: 95px;
     position: absolute;
     text-shadow: 0px 1px 2px #000000b3;
+    @media (min-width: 740px) {
+      left: 68px;
+      top: 108px;
+      line-height: 16px;
+      font-size: 11px;
+    }
+    @media (min-width: 1024px) {
+      font-size: 16px;
+      line-height: 23px;
+      top: 150px;
+      left: 95px;
+    }
     > p:nth-child(1) {
-      margin-right: 82px;
-      width: 200px;
+      @media (min-width: 740px) {
+        margin-right: 59px;
+        width: 144px;
+      }
+      @media (min-width: 1024px) {
+        margin-right: 82px;
+        width: 200px;
+      }
       text-transform: uppercase;
     }
   }
 
-  .cvv-cartao{
+  .cvv-cartao {
     display: flex;
-    font-size: 24px;
-    line-height: 27px;
     letter-spacing: -0.12px;
     color: #000;
     position: absolute;
-    top: 81px;
-    left: 246px;
     width: 100%;
+    @media (min-width: 740px) {
+      left: 177px;
+      top: 58px;
+      font-size: 17px;
+      line-height: 19px;
+    }
+    @media (min-width: 1024px) {
+      top: 81px;
+      left: 246px;
+      font-size: 24px;
+      line-height: 27px;
+    }
     > p {
       text-shadow: 0px 1px 2px #000000b3;
     }
@@ -115,22 +226,39 @@ export const ViewLeft = styled.div`
 `;
 
 export const ViewRight = styled.div`
-  width: 672px;
   height: 100%;
-  /* background: rgba(0, 0, 0, 0.1); */
   z-index: 1;
+  @media (min-width: 740px) {
+    width: 485px;
+  }
+  @media (min-width: 1024px) {
+    width: 672px;
+  }
 
   .passo {
-    margin-top: 50px;
-    padding-left: 195px;
+    @media (min-width: 740px) {
+      margin-top: 36px;
+      padding-left: 140px;
+    }
+    @media (min-width: 1024px) {
+      margin-top: 50px;
+      padding-left: 195px;
+    }
     display: flex;
     align-items: center;
     > p {
-      font-size: 13px;
-      line-height: 0px;
       letter-spacing: -0.01px;
-      margin-left: 8px;
-      margin-right: 24px;
+      line-height: 0px;
+      @media (min-width: 740px) {
+        font-size: 9px;
+        margin-left: 5px;
+        margin-right: 17px;
+      }
+      @media (min-width: 1024px) {
+        font-size: 13px;
+        margin-left: 8px;
+        margin-right: 24px;
+      }
       color: #de4b4b;
     }
     .passo-numero {
@@ -141,35 +269,98 @@ export const ViewRight = styled.div`
 
       height: 22px;
       width: 22px;
+
       border: 1.3px solid #de4b4b;
       border-radius: 50%;
       margin: 0;
     }
     .icone-check,
     .passo-numero_last {
-      margin-left: 24px;
+      @media (min-width: 740px) {
+        margin-left: 17px;
+      }
+      @media (min-width: 1024px) {
+        margin-left: 24px;
+      }
     }
+  }
+
+  button {
+    background-color: #de4b4b;
+    border-radius: 10px;
+    border: none;
+    color: #fff;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: -0.01px;
+    font-weight: bold;
+    @media (min-width: 740px) {
+      width: 177px;
+      height: 36px;
+      margin-left: 261px;
+      font-size: 12px;
+      line-height: 15px;
+    }
+    @media (min-width: 1024px) {
+      width: 246px;
+      height: 51px;
+      margin-left: 362px;
+      font-size: 17px;
+      line-height: 22px;
+    }
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    :hover {
+      transform: scale(1.1);
+    }
+  }
+
+  .button-ativo {
+    background-color: #de4b4b;
+  }
+  .button-inativo {
+    background-color: #c9c9c9;
   }
 `;
 
 export const Formulario = styled.div`
-  margin-top: 70px;
-  padding-left: 168px;
+  @media (min-width: 740px) {
+    margin-top: 50px;
+    padding-left: 121px;
+  }
+  @media (min-width: 1024px) {
+    margin-top: 70px;
+    padding-left: 168px;
+  }
 
   .form-input {
-    width: 440px;
-    height: 25px;
     border: none;
     border-bottom: 1px solid #c9c9c9;
-    margin-bottom: 62px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 22px;
     background: rgba(0, 0, 0, 0);
+    @media (min-width: 740px) {
+      width: 317px;
+      height: 18px;
+      margin-bottom: 44px;
+      font-size: 15px;
+    }
+    @media (min-width: 1024px) {
+      width: 440px;
+      height: 25px;
+      margin-bottom: 62px;
+      font-size: 22px;
+    }
     ::placeholder,
     .option {
       color: #c9c9c9;
       font-family: Verdana, Geneva, Tahoma, sans-serif;
-      font-size: 22px;
+
+      @media (min-width: 740px) {
+        font-size: 15px;
+      }
+      @media (min-width: 1024px) {
+        font-size: 22px;
+      }
     }
 
     .option {
@@ -189,17 +380,27 @@ export const Formulario = styled.div`
   }
 
   .select {
-    color: ${(props) => (props.colorParcela ===true ? "#000" : "#c9c9c9")};
+    color: ${(props) => (props.colorParcela === true ? "#000" : "#c9c9c9")};
   }
   .date {
-    color: ${(props) => (props.colorDate ===true ? "#000" : "#c9c9c9")};
+    color: ${(props) => (props.colorDate === true ? "#000" : "#c9c9c9")};
   }
   .validade-cvv {
     display: flex;
     .form-input {
-      width: 212px;
+      @media (min-width: 740px) {
+        width: 153px;
+      }
+      @media (min-width: 1024px) {
+        width: 212px;
+      }
       :nth-child(1) {
-        margin-right: 16px;
+        @media (min-width: 740px) {
+          margin-right: 11px;
+        }
+        @media (min-width: 1024px) {
+          margin-right: 16px;
+        }
       }
     }
   }

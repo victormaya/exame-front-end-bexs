@@ -4,7 +4,9 @@ import seta from "./assets/icons/seta.png";
 import seta_right from "./assets/icons/seta-r.png";
 import icon_card from "./assets/icons/icon-card.svg";
 import cartao from "./assets/icons/cartao.svg";
+import cartaoAtivo from "./assets/icons/cartao-ativo.svg";
 import versoCartaoImg from "./assets/icons/verso-cartao.svg";
+import versoCartaoImgAtivo from "./assets/icons/verso-cartao-ativo.svg";
 import check from "./assets/icons/check.png";
 
 function App() {
@@ -37,7 +39,7 @@ function App() {
       setCurrentInputAno("00");
     }
     if (currentInputCvv.length === 0) {
-      setCurrentInputAno("00");
+      setCurrentInputCvv("***");
     }
   }, [
     currentInputNumber,
@@ -59,12 +61,24 @@ function App() {
               <p>Alterar forma de pagamento</p>
             </div>
             <div className='titulo-cartao'>
-              <img src={icon_card} alt='icone-card' />
+              <div className='icon-card'>
+                <img src={icon_card} alt='icone-card' />
+              </div>
               <p>Adicione um novo cartão de crédito</p>
             </div>
             {versoCartao === false ? (
               <div className='cartao'>
-                <img src={cartao} alt='icone-card' />
+                <div className='img-cartao'>
+                  <img
+                    src={
+                      currentInputNumber.length === 16 &&
+                      currentInputNumber !== "****************"
+                        ? cartaoAtivo
+                        : cartao
+                    }
+                    alt='icone-card'
+                  />
+                </div>
                 <div className='numero-cartao'>
                   <p>{currentInputNumber.slice(0, 4)}</p>
                   <p>{currentInputNumber.slice(4, 8)}</p>
@@ -80,7 +94,17 @@ function App() {
               </div>
             ) : (
               <div className='cartao'>
-                <img src={versoCartaoImg} alt='icone-card' />
+                <div className='img-cartao'>
+                  <img
+                    src={
+                      currentInputNumber.length === 16 &&
+                      currentInputNumber !== "****************"
+                        ? versoCartaoImgAtivo
+                        : versoCartaoImg
+                    }
+                    alt='icone-card'
+                  />
+                </div>
                 <div className='cvv-cartao'>
                   <p>{currentInputCvv}</p>
                 </div>
@@ -187,6 +211,22 @@ function App() {
                 </option>
               </select>
             </Formulario>
+            <button
+              className={
+                currentInputNumber.length === 16 &&
+                currentInputNumber !== "****************" &&
+                currentInputTitular !== "NOME DO TITULAR" &&
+                currentInputMes !== "00" &&
+                currentInputAno !== "00" &&
+                currentInputCvv !== "***" &&
+                currentInputCvv.length === 3 &&
+                colorParcela
+                  ? "button-ativo"
+                  : "button-inativo"
+              }
+            >
+              continuar
+            </button>
           </ViewRight>
         </Container>
       </Page>

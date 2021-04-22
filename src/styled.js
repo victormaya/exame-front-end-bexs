@@ -5,12 +5,10 @@ export const Page = styled.div`
   height: 100vh;
   display: flex;
   @media (max-width: 739px) {
-    height: 100%;
+    height: 100vh;
   }
-  @media (min-width: 740px) {
-    justify-content: center;
-    align-items: center;
-  }
+  justify-content: center;
+  align-items: center;
 
   p {
     font-family: Verdana, Geneva, Tahoma, sans-serif;

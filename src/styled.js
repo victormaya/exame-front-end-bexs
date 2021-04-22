@@ -4,8 +4,13 @@ export const Page = styled.div`
   width: 100vw;
   height: 100vh;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  @media (max-width: 739px) {
+    height: 100%;
+  }
+  @media (min-width: 740px) {
+    justify-content: center;
+    align-items: center;
+  }
 
   p {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -19,10 +24,17 @@ export const Page = styled.div`
 
 export const Container = styled.div`
   display: flex;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+
+  @media (max-width: 739px) {
+    width: 360px;
+    height: auto;
+    flex-direction: column;
+    overflow-x: hidden;
+  }
   @media (min-width: 740px) {
     width: 740px;
     height: 430px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   }
   @media (min-width: 1024px) {
     width: 1024px;
@@ -31,11 +43,16 @@ export const Container = styled.div`
 `;
 
 export const ViewLeft = styled.div`
-  height: 100%;
   background: #de4b4b;
   z-index: 2;
+  @media (max-width: 739px) {
+    width: 100%;
+    height: 200px;
+    padding-top: 40px;
+  }
   @media (min-width: 740px) {
     width: 254px;
+    height: 100%;
   }
   @media (min-width: 1024px) {
     width: 352px;
@@ -59,6 +76,10 @@ export const ViewLeft = styled.div`
   }
 
   .seta {
+    @media (max-width: 739px) {
+      padding-left: 15px;
+      margin-right: 109px;
+    }
     @media (min-width: 740px) {
       margin-right: 10px;
     }
@@ -68,6 +89,10 @@ export const ViewLeft = styled.div`
   }
 
   .titulo-cartao {
+    @media (max-width: 739px) {
+      justify-content: center;
+      margin-top: 30px;
+    }
     @media (min-width: 740px) {
       margin-top: 36px;
       padding-left: 49px;
@@ -80,6 +105,12 @@ export const ViewLeft = styled.div`
     > p {
       color: #fff;
       margin: 0;
+      @media (max-width: 739px) {
+        width: 165px;
+        margin-left: 15px;
+        font-size: 16px;
+        line-height: 20px;
+      }
       @media (min-width: 740px) {
         margin-left: 10px;
         font-size: 14px;
@@ -96,6 +127,18 @@ export const ViewLeft = styled.div`
   }
 
   .icon-card {
+    > img {
+      max-width: 140%;
+      box-sizing: border-box;
+    }
+    @media (max-width: 739px) {
+      width: 40px;
+      height: 40px;
+      > img {
+        max-width: 95%;
+        box-sizing: border-box;
+      }
+    }
     @media (min-width: 740px) {
       width: 36px;
       height: 36px;
@@ -105,10 +148,6 @@ export const ViewLeft = styled.div`
       width: 50px;
       height: 50px;
       margin-right: 15px;
-    }
-    > img {
-      max-width: 140%;
-      box-sizing: border-box;
     }
   }
 
@@ -125,6 +164,14 @@ export const ViewLeft = styled.div`
   }
 
   .img-cartao {
+    @media (max-width: 739px) {
+      width: 280px;
+      height: 172px;
+      margin-top: 15px;
+      position: relative;
+      margin-left: 50%;
+      transform: translateX(-50%);
+    }
     @media (min-width: 740px) {
       width: 263px;
       height: 161px;
@@ -147,6 +194,12 @@ export const ViewLeft = styled.div`
     position: absolute;
 
     width: 100%;
+    @media (max-width: 739px) {
+      left: 54px;
+      top: 60px;
+      line-height: 20px;
+      font-size: 19px;
+    }
     @media (min-width: 740px) {
       left: 68px;
       top: 57px;
@@ -160,6 +213,9 @@ export const ViewLeft = styled.div`
       left: 95px;
     }
     > p {
+      @media (max-width: 739px) {
+        margin-right: 10px;
+      }
       @media (min-width: 740px) {
         margin-right: 20px;
       }
@@ -176,6 +232,12 @@ export const ViewLeft = styled.div`
     color: #fff;
     position: absolute;
     text-shadow: 0px 1px 2px #000000b3;
+    @media (max-width: 739px) {
+      left: 54px;
+      top: 127px;
+      line-height: 15px;
+      font-size: 12px;
+    }
     @media (min-width: 740px) {
       left: 68px;
       top: 108px;
@@ -189,6 +251,10 @@ export const ViewLeft = styled.div`
       left: 95px;
     }
     > p:nth-child(1) {
+      @media (max-width: 739px) {
+        margin-right: 28px;
+        width: 190px;
+      }
       @media (min-width: 740px) {
         margin-right: 59px;
         width: 144px;
@@ -206,12 +272,19 @@ export const ViewLeft = styled.div`
     letter-spacing: -0.12px;
     color: #000;
     position: absolute;
-    width: 100%;
+
+    @media (max-width: 739px) {
+      left: 180px;
+      top: 65px;
+      line-height: 20px;
+      font-size: 19px;
+    }
     @media (min-width: 740px) {
       left: 177px;
       top: 58px;
       font-size: 17px;
       line-height: 19px;
+      width: 100%;
     }
     @media (min-width: 1024px) {
       top: 81px;
@@ -228,6 +301,11 @@ export const ViewLeft = styled.div`
 export const ViewRight = styled.div`
   height: 100%;
   z-index: 1;
+  @media (max-width: 739px) {
+    padding: 0 40px;
+    padding-top: 115px;
+    justify-content: center;
+  }
   @media (min-width: 740px) {
     width: 485px;
   }
@@ -294,6 +372,13 @@ export const ViewRight = styled.div`
     text-transform: uppercase;
     letter-spacing: -0.01px;
     font-weight: bold;
+    @media (max-width: 739px) {
+      width: 280px;
+      height: 50px;
+      margin-bottom: 15px;
+      position: relative;
+    }
+
     @media (min-width: 740px) {
       width: 177px;
       height: 36px;
@@ -311,7 +396,9 @@ export const ViewRight = styled.div`
     cursor: pointer;
     transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     :hover {
-      transform: scale(1.1);
+      @media (min-width: 740px) {
+        transform: scale(1.1);
+      }
     }
   }
 
@@ -338,6 +425,12 @@ export const Formulario = styled.div`
     border-bottom: 1px solid #c9c9c9;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     background: rgba(0, 0, 0, 0);
+    @media (max-width: 739px) {
+      width: 100%;
+      height: 25px;
+      font-size: 17px;
+      margin-bottom: 44px;
+    }
     @media (min-width: 740px) {
       width: 317px;
       height: 18px;
@@ -354,7 +447,9 @@ export const Formulario = styled.div`
     .option {
       color: #c9c9c9;
       font-family: Verdana, Geneva, Tahoma, sans-serif;
-
+      @media (max-width: 739px) {
+        font-size: 17px;
+      }
       @media (min-width: 740px) {
         font-size: 15px;
       }
@@ -383,11 +478,20 @@ export const Formulario = styled.div`
     color: ${(props) => (props.colorParcela === true ? "#000" : "#c9c9c9")};
   }
   .date {
+    @media (max-width: 739px) {
+      width: 130px;
+    }
     color: ${(props) => (props.colorDate === true ? "#000" : "#c9c9c9")};
   }
   .validade-cvv {
     display: flex;
+    @media (max-width: 739px) {
+      justify-content: space-between;
+    }
     .form-input {
+      @media (max-width: 739px) {
+        width: 130px;
+      }
       @media (min-width: 740px) {
         width: 153px;
       }

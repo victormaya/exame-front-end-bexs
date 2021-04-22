@@ -58,7 +58,13 @@ function App() {
               <div className='seta'>
                 <img src={seta} alt='seta' />
               </div>
-              <p>Alterar forma de pagamento</p>
+              {window.innerWidth > 749 ? (
+                <p>Alterar forma de pagamento</p>
+              ) : (
+                <p>
+                  <strong>Etapa 2</strong> de 3
+                </p>
+              )}
             </div>
             <div className='titulo-cartao'>
               <div className='icon-card'>
@@ -112,22 +118,26 @@ function App() {
             )}
           </ViewLeft>
           <ViewRight>
-            <div className='passo'>
-              <p className='passo-numero'>1</p>
-              <p>Carrinho</p>
-              <div>
-                <img src={seta_right} alt='seta' />
+            {window.innerWidth > 739 ? (
+              <div className='passo'>
+                <p className='passo-numero'>1</p>
+                <p>Carrinho</p>
+                <div>
+                  <img src={seta_right} alt='seta' />
+                </div>
+                <div className='icone-check'>
+                  <img src={check} alt='check' />
+                </div>
+                <p>Pagamento</p>
+                <div>
+                  <img src={seta_right} alt='seta' />
+                </div>
+                <p className='passo-numero passo-numero_last'>3</p>
+                <p>Confirmação</p>
               </div>
-              <div className='icone-check'>
-                <img src={check} alt='check' />
-              </div>
-              <p>Pagamento</p>
-              <div>
-                <img src={seta_right} alt='seta' />
-              </div>
-              <p className='passo-numero passo-numero_last'>3</p>
-              <p>Confirmação</p>
-            </div>
+            ) : (
+              <></>
+            )}
             <Formulario colorParcela={colorParcela} colorDate={colorDate}>
               <input
                 className='form-input'
